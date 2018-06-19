@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Android Spans</string>
+    <string name="size_test">
+        <annotation size="1.6">BIG size</annotation>
+        normal size
+    </string>
+    <string name="color_test">
+        <annotation color="#04EEAA">Color</annotation>
+        normal color
+    </string>
+
+    <string name="other_test">
+        <annotation italic="yes"><annotation size="1.6">Test text</annotation>
+            other text </annotation><annotation fgcolor="#04EEAA" bgcolor="#000000">Test text</annotation> nothing
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
