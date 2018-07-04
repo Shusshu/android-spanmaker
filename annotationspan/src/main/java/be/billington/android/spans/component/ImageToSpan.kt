@@ -76,20 +76,21 @@ open class ImageResToSpan(private val context: Context) : ImageToSpan(context) {
             val color = tagAttr.attributes[ATTR_COLOR]
             val url = tagAttr.attributes[ATTR_URL].orEmpty()
             if (canProcess(url)) {
-                var drawable: Drawable = createDrawable(context, Uri.parse(processUrl(url))) ?: return emptyArray()
-                try {
-                    val imageTintColor = Color.parseColor(color)
-                    drawable = DrawableCompat.wrap(drawable)
-                    DrawableCompat.setTint(drawable, imageTintColor)
-                    DrawableCompat.setTintMode(drawable, PorterDuff.Mode.SRC_IN)
-                } catch (ex: IllegalArgumentException) {
-                    // Unknown color
+                val fileUrl = processUrl(url)
+                if (fileUrl.isNotBlank()) {
+                    var drawable: Drawable = createDrawable(context, Uri.parse(fileUrl)) ?: return emptyArray()
+                    try {
+                        val imageTintColor = Color.parseColor(color)
+                        drawable = DrawableCompat.wrap(drawable)
+                        DrawableCompat.setTint(drawable, imageTintColor)
+                        DrawableCompat.setTintMode(drawable, PorterDuff.Mode.SRC_IN)
+                    } catch (ex: IllegalArgumentException) {
+                        // Unknown color
+                    }
+                    return arrayOf(ImageSpan(drawable))
                 }
-                return arrayOf(ImageSpan(drawable))
-
-            } else {
-                return emptyArray()
             }
+            return emptyArray()
 
         } else {
             return super.toSpans(tagAttr)
