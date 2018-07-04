@@ -36,11 +36,13 @@ open class ImageToSpan(private val context: Context) : TagSpanner(), ImageUrl {
         if (url == null || url.isEmpty()) {
             return emptyArray()
         }
-        return if (canProcess(url)) {
-            arrayOf(ImageSpan(context, Uri.parse(processUrl(url))))
-        } else {
-            emptyArray()
+        if (canProcess(url)) {
+            val fileUrl = processUrl(url)
+            if (fileUrl.isNotBlank()) {
+                return arrayOf(ImageSpan(context, Uri.parse(fileUrl)))
+            }
         }
+        return emptyArray()
     }
 
 
