@@ -17,7 +17,7 @@ class StyleToSpan : TagSpanner() {
     override val tagNames: List<String> = listOf("style")
 
     override fun transform(tagAttr: TagAttr, body: CharSequence): SpannableStringBuilder {
-        return SpannableStringBuilder().inSpans(toSpans(tagAttr)) { append(body) }
+        return SpannableStringBuilder().inSpans(*toSpans(tagAttr)) { append(body) }
     }
 
     override fun toSpans(tagAttr: TagAttr): Array<Any> {
