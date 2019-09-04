@@ -1,15 +1,9 @@
 package be.billington.android.spans.component
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.text.SpannableStringBuilder
-import android.text.style.AbsoluteSizeSpan
-import android.text.style.BackgroundColorSpan
-import android.text.style.CharacterStyle
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
-import android.text.style.SubscriptSpan
-import android.text.style.SuperscriptSpan
-import android.text.style.TypefaceSpan
+import android.text.style.*
 import androidx.core.text.inSpans
 
 class StyleToSpan : TagSpanner() {
@@ -44,6 +38,14 @@ class StyleToSpan : TagSpanner() {
 
             ATTR_FONT_FAMILY -> TypefaceSpan(attrValue)
 
+            ATTR_BOLD -> StyleSpan(Typeface.BOLD)
+
+            ATTR_ITALIC -> StyleSpan(Typeface.ITALIC)
+
+            ATTR_UNDERLINE -> UnderlineSpan()
+
+            ATTR_STRIKE -> StrikethroughSpan()
+
             ATTR_EMBOSS -> EmbossToSpan.embossSpan()
 
             ATTR_SUPERSCRIPT -> SuperscriptSpan()
@@ -65,6 +67,10 @@ class StyleToSpan : TagSpanner() {
         const val ATTR_BG_COLOR = "bgcolor"
         const val ATTR_FG_COLOR = "fgcolor"
         const val ATTR_FONT_FAMILY = "font-family"
+        const val ATTR_BOLD = "bold"
+        const val ATTR_ITALIC = "italic"
+        const val ATTR_UNDERLINE = "underline"
+        const val ATTR_STRIKE = "strike"
         const val ATTR_EMBOSS = "emboss"
         const val ATTR_SUPERSCRIPT = "superscript"
         const val ATTR_SUBSCRIPT = "subscript"
