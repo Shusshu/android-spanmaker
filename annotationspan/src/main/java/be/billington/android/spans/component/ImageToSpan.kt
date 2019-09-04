@@ -8,9 +8,9 @@ import android.graphics.PorterDuff
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.support.v4.graphics.drawable.DrawableCompat
 import android.text.style.ImageSpan
 import android.util.Log
+import androidx.core.graphics.drawable.DrawableCompat
 import be.billington.android.spans.component.ImageUrl.Companion.HTTP
 
 interface ImageUrl {
